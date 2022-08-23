@@ -5,8 +5,11 @@ export default function GifApp() {
 
     const [category, setCategory] = useState(['perro', 'gato'])
 
-    const addCategory= () =>{
-        setCategory([...category,inputValue]);
+    const [inputValueDos, setInputValueDos] = useState('Dos');
+
+
+    const addCategory = (value) =>{
+        setCategory([...category,value]);
     }
     
 
@@ -14,7 +17,7 @@ export default function GifApp() {
         <>
             <h1>Categories</h1>
             
-            <InputCategory addCategory={}></InputCategory>
+            <InputCategory addCategory={addCategory} setInputValueDos={setInputValueDos}></InputCategory>
 
             <ul>
                 {
@@ -22,7 +25,8 @@ export default function GifApp() {
                         (<li>{x}</li>))
                 }
             </ul>
-            <button onClick={addCategory}>Agregar</button>
+            
+            <button onClick={()=>{addCategory(inputValueDos)}}>Agregar</button>
         </>
     )
 }

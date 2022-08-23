@@ -1,22 +1,24 @@
-export const InputCategory = () => {
+import { useState } from "react";
 
-    const [inputValue, setInputValue] = useState(false);
+export const InputCategory = ({ addCategory,setInputValueDos }) => {
+
+    const [inputValue, setInputValue] = useState('');
 
     const captureInputText = (e) => {
         setInputValue(e.target.value);
         //console.log(e);
+
+        setInputValueDos(e.target.value);
     }
 
-    const onSubmit = (e) =>{
-
+    const onSubmit = (e) => {
+        debugger;
         e.preventDefault();
-        
+        addCategory(inputValue);
     }
-
 
     return (<>
         <form onSubmit={onSubmit}>
-
             <input
                 type="text"
                 placeholder={inputValue}
