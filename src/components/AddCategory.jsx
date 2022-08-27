@@ -1,28 +1,25 @@
 import { useState } from "react";
 
-export const InputCategory = ({ addCategory,setInputValueDos }) => {
+export const AddCategory = ({ onNewCategory, setInputValueDos }) => {
 
     const [inputValue, setInputValue] = useState('');
 
-    const captureInputText = (e) => {
+    const onInputChange = (e) => {
         setInputValue(e.target.value);
-        //console.log(e);
-
-        setInputValueDos(e.target.value);
     }
 
     const onSubmit = (e) => {
-        debugger;
         e.preventDefault();
-        addCategory(inputValue);
+        if (inputValue.trim().length <= 1) return;
+        onNewCategory(inputValue);
     }
 
     return (<>
         <form onSubmit={onSubmit}>
             <input
                 type="text"
-                placeholder={inputValue}
-                onChange={captureInputText} />
+                placeholder="Buscar gifs"
+                onChange={onInputChange} />
         </form>
 
     </>)

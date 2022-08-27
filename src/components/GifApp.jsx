@@ -1,32 +1,38 @@
 import { useState } from "react"
-import { InputCategory } from "./InputCategory";
+import { AddCategory } from "./AddCategory";
 
 export default function GifApp() {
 
-    const [category, setCategory] = useState(['perro', 'gato'])
+    const [categories, setCategories] = useState(['perro', 'gato'])
+    //ejemplo si hubiera querido que el boton sepa el estado del input
+    //const [inputValueDos, setInputValueDos] = useState('Dos');
 
-    const [inputValueDos, setInputValueDos] = useState('Dos');
 
+    const onAddCategory = (newCategory) => {
 
-    const addCategory = (value) =>{
-        setCategory([...category,value]);
+        if (categories.includes(newCategory))return;
+
+        setCategories([...categories, newCategory]);
     }
-    
+
 
     return (
         <>
             <h1>Categories</h1>
-            
-            <InputCategory addCategory={addCategory} setInputValueDos={setInputValueDos}></InputCategory>
+
+            <AddCategory
+                onNewCategory={onAddCategory}
+            >
+            </AddCategory>
 
             <ul>
                 {
-                    category.map(x =>
-                        (<li>{x}</li>))
+                    categories.map(x =>
+                        (<li key={x}>{x}</li>))
                 }
             </ul>
-            
-            <button onClick={()=>{addCategory(inputValueDos)}}>Agregar</button>
+
+
         </>
     )
 }
