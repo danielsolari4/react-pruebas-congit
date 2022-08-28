@@ -1,17 +1,16 @@
 import { useState } from "react"
 import { AddCategory } from "./AddCategory";
+import { GifGrid } from './GifGrid';
 
 export default function GifApp() {
 
-    const [categories, setCategories] = useState(['perro', 'gato'])
+    const [categories, setCategories] = useState(['One Punch', 'You'])
     //ejemplo si hubiera querido que el boton sepa el estado del input
     //const [inputValueDos, setInputValueDos] = useState('Dos');
 
 
     const onAddCategory = (newCategory) => {
-
-        if (categories.includes(newCategory))return;
-
+        if (categories.includes(newCategory)) return;
         setCategories([...categories, newCategory]);
     }
 
@@ -25,12 +24,17 @@ export default function GifApp() {
             >
             </AddCategory>
 
-            <ul>
-                {
-                    categories.map(x =>
-                        (<li key={x}>{x}</li>))
-                }
-            </ul>
+            {
+                categories.map(category =>
+                (
+                    <GifGrid
+                        key={category}
+                        category={category}
+                    />
+                )
+                )
+            }
+
 
 
         </>
