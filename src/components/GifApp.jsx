@@ -4,7 +4,7 @@ import { GifGrid } from './GifGrid';
 
 export default function GifApp() {
 
-    const [categories, setCategories] = useState(['One Punch', 'You'])
+    const [categories, setCategories] = useState(['valorant'])
     //ejemplo si hubiera querido que el boton sepa el estado del input
     //const [inputValueDos, setInputValueDos] = useState('Dos');
 
